@@ -17,6 +17,7 @@
         <module>consume-ribbon</module>
         <module>consume-feign</module>
         <module>cloud-zuul</module>
+        <module>cloud-config</module>
     </modules>
 
 <!--  版本定义  -->

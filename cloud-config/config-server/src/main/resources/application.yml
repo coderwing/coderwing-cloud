@@ -1,0 +1,19 @@
+
+
+server:
+  port: 9006
+
+spring:
+  application:
+  name: cloud-config-server
+  cloud:
+    config:
+      # config远程分支
+      label: master
+      # git远程信息配置
+      server:
+        git:
+          uri: https://github.com/forezp/SpringcloudConfig/
+          searchPaths: respo
+          username:
+          password:
