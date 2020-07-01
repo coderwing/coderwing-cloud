@@ -13,7 +13,7 @@ spring:
       # git远程信息配置
       server:
         git:
-          uri: https://github.com/forezp/SpringcloudConfig/
+          uri: https://github.com/coderwing/coderwing-cloud/tree/master/cloud-config/config-files/
           searchPaths: respo
           username:
           password:
