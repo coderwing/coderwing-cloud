@@ -12,7 +12,9 @@ spring:
       # git远程信息配置
       server:
         git:
-          uri: https://github.com/coderwing/coderwing-cloud/tree/master/cloud-config/config-files/
+          # 该路径不能用作远程git'配置文件地址，这不是一个独立的git仓库项目地址
+          # uri: https://github.com/coderwing/coderwing-cloud/tree/master/cloud-config/config-files/
+          uri: https://github.com/forezp/SpringcloudConfig/
           searchPaths: respo
           # 公开仓库不需要使用用户名和密码
           username:
