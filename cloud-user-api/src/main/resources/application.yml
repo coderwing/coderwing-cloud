@@ -1,0 +1,38 @@
+
+server:
+  # 修改端口号重新启动，实现多实例同时运行，模拟负载
+  port: 9001
+
+spring:
+  application:
+    name: cloud-user-api
+  datasource:
+    url: jdbc:mysql://47.94.211.209:8306/ncp_prevention?allowMultiQueries=true&serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8&tinyInt1isBit=false
+    username: root
+    password: Tusdao@mysql2019*
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+
+management:
+  info:
+    git:
+      mode: full # simple
+
+## Eureka 注册 client配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

@@ -1,0 +1,25 @@
+
+server:
+  port: 9005
+
+spring:
+  application:
+    name: cloud-zuul
+
+## Eureka 注册 client配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+## zuul 路由配置
+zuul:
+  routes:
+    # ribbon代理的服务，对应9003端口的ribbon服务
+    api-r:
+      path: /api-r/**
+      serviceId: consume-ribbon
+    # feign代理的服务，对应9004端口的feign服务
+    api-f:
+      path: /api-f/**
+      serviceId: consume-feign
