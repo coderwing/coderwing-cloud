@@ -26,6 +26,7 @@ logs
 build
 bin
 src/test/
+target/
 
 ### NetBeans ###
 nbproject/private/
