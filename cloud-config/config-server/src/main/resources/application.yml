@@ -14,5 +14,6 @@ spring:
         git:
           uri: https://github.com/coderwing/coderwing-cloud/tree/master/cloud-config/config-files/
           searchPaths: respo
-          username: coderwing
-          password: ZN125529sxd
+          # 公开仓库不需要使用用户名和密码
+          username:
+          password:
