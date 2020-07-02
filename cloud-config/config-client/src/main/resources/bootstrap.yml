@@ -24,6 +24,28 @@ spring:
         enabled: true # 启动服务发现
         serviceId: cloud-config-server # 注册中心指定的配置中心服务节点名
 
+    # 开启总线支持
+    # 这里开启总线的低用于配置文件更新通知
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+
+    # Bus总线依赖于RabbitMQ
+    rabbitmq:
+      host: localhost
+      port: 15672
+      username: guest
+      password: guest
+
+# 配置文件刷新管理
+management:
+  endpoints:
+    web:
+      exposure:
+        # 配置文件修改后，求情：http://localhost:8889/actuator/bus-refresh，即可实现配置文件更新通知
+        include: bus-refresh
+
 ## Eureka 注册 client配置
 eureka:
   client:
