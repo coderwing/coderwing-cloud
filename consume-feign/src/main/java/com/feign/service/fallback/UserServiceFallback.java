@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserServiceFallback implements UserService {
 
-
     @Override
     public String addUser(String name) {
         return "adduser: "+name+" error!!!";

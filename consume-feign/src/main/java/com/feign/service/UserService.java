@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Feign 接口定义调用
  */
 // 指定调用的服务名称, 并指明断路器类
-@FeignClient( value = "CLOUD-USER-API" ,fallback = UserServiceFallback.class )
+@FeignClient( value = "BIZ-USER-API" ,fallback = UserServiceFallback.class )
 public interface UserService {
 
     // 这里使用 @RequestMapping 没问题，使用@GetMapping的话需要指明 consumes属性
