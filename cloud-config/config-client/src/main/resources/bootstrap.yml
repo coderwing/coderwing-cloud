@@ -18,3 +18,14 @@ spring:
       profile: dev
       # config server uri
       uri: http://localhost:9006/
+      # 注册中心发现配置中心服务，实现配置中心服务高可用
+      # 可以启动配置中心server集群负载
+      discovery:
+        enabled: true # 启动服务发现
+        serviceId: cloud-config-server # 注册中心指定的配置中心服务节点名
+
+## Eureka 注册 client配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
