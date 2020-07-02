@@ -18,6 +18,7 @@
         <module>consume-feign</module>
         <module>net-zuul</module>
         <module>cloud-config</module>
+        <module>zipkin-trace-server</module>
     </modules>
 
 <!--  版本定义  -->
