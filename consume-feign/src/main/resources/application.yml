@@ -16,3 +16,10 @@ eureka:
 feign:
   hystrix:
     enabled: true
+
+# 这里用来增加支持 /actuator/**的访问
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream # 也可以写 '*'
