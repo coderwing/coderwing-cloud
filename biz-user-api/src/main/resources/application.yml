@@ -35,4 +35,6 @@ management:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      # 未改造前使用
+#      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://peer1:8761/eureka/
