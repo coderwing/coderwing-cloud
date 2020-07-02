@@ -30,6 +30,11 @@ management:
   info:
     git:
       mode: full # simple
+  # 这里用来增加支持 /actuator/**的访问
+  endpoints:
+    web:
+      exposure:
+        include: "*" # 也可以写具体的值，如 hystrix.stream
 
 ## Eureka 注册 client配置
 eureka:

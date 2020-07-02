@@ -22,4 +22,19 @@ management:
   endpoints:
     web:
       exposure:
-        include: hystrix.stream # 也可以写 '*'
+        include: "*" # 也可以写具体的值，如 hystrix.stream
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+
+# 局和监控 配置
+turbine:
+  # 多个项目使用逗号分隔
+  app-config: biz-user-api # ,biz-goods-api
+  aggregator:
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  combine-host: true
+  instanceUrlSuffix:
+    default: actuator/hystrix.stream
+#  CONSUMER-ORDER-FEIGN-HYSTRIX-TURBINE: /hystrix.stream

@@ -12,7 +12,13 @@
 ```yaml
 # 开启HystrixDashboard
 @EnableHystrixDashboard
+
 # 内部使用了 EnableCircuitBreakerImportSelector 加载相关的断路器配置类；熔断超时机制
 @EnableCircuitBreaker
 ```
 > 访问：http://localhost:9004/hystrix
+>
+## 断路器Dashboard
+> 断路器的Dashboard是查看单节点的，真实的价值并不是很大；
+> 正常情况下多使用 Hystrix Turbine；Hystrix Turbine将每个服务Hystrix Dashboard数据进行了整合
+> 
