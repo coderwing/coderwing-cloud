@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class ConfigController {
 
-    @Value("${foo}")
-    private String zuulId ;
+    @Value("${zuul.routes.api-a.path}")
+    private String path ;
 
-    @RequestMapping("/name")
-    public String name() {
-        log.info( "从cloud-config-server获取到配置属性 name:【{}】", zuulId );
-        return zuulId ;
+    @RequestMapping("/path")
+    public String path() {
+        log.info( "从cloud-config-server获取到配置属性 path:【{}】", path );
+        return path ;
     }
 
 

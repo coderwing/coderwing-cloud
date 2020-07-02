@@ -1,0 +1,20 @@
+
+
+# 注意：这里配置的port并不会起作用，因为在加载的zuul-dev.properties配置文件中存在了server.port的配置，会使用git远端上的配置信息加载
+server:
+  port: 9007
+
+spring:
+  application:
+    name: cloud-config-client
+  cloud:
+    # 这里加载的配置信息直接用于当前项目
+    config:
+      # application in config server
+      name: zuul
+      # git branch
+      label: master
+      # project ENV
+      profile: dev
+      # config server uri
+      uri: http://localhost:9006/
