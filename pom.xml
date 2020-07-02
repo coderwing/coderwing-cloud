@@ -12,11 +12,11 @@
 <!--  模块管理  -->
     <modules>
         <module>eureka-server</module>
-        <module>cloud-user-api</module>
-        <module>cloud-goods-api</module>
+        <module>biz-user-api</module>
+        <module>biz-goods-api</module>
         <module>consume-ribbon</module>
         <module>consume-feign</module>
-        <module>cloud-zuul</module>
+        <module>net-zuul</module>
         <module>cloud-config</module>
     </modules>
 

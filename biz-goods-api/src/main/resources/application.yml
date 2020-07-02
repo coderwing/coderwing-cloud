@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: cloud-goods-api
+    name: biz-goods-api
   datasource:
     url: jdbc:mysql://47.94.211.209:8306/ncp_prevention?allowMultiQueries=true&serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8&tinyInt1isBit=false
     username: root
