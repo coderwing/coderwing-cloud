@@ -15,6 +15,16 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
+            <!--
+                Gateway使用的WebFlux，与老的spring-webmvc冲突
+                使用时应将将webmvc包排除
+            -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-webmvc</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!--  Eureka Client  -->

@@ -16,5 +16,3 @@
 >
  总结起来就是三大特性：Route、Predicate和Filter
  
- ###Filter
- > Filter 有三种策略：pre、proxy和post
