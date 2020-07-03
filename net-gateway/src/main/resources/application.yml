@@ -6,8 +6,59 @@ spring:
   application:
     name: net-gateway
 
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      # 这是一个集合属性，对应的每一项开头都要使用 -
+      default-filters:
+        - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+      routes:
+        -
+          id: BIZ-USER-API-1
+          # lb代表从注册中心获取服务
+          uri: lb://BIZ-USER-API
+          predicates:
+            # 转发该路径
+            # 等于访问http://BIZ-USER-API/user/**
+            # - Path=/user/**
+
+            # 使用前缀
+            - Path=/userapi/**
+          # 带前缀
+          filters:
+            # 表示在转发时去掉userapi
+            - StripPrefix=1
+        ## 第二个路由配置
+        -
+          id: BIZ-USER-API-2
+          # lb代表从注册中心获取服务
+          uri: lb://BIZ-USER-API
+          predicates:
+            # 转发该路径
+            # 等于访问http://BIZ-USER-API/user/**
+            # - Path=/user/**
+
+            # 使用前缀
+            - Path=/userapi2/**
+          # 带前缀
+          filters:
+            # 表示在转发时去掉userapi
+            - StripPrefix=1
+            # 使用Hystrix，注意：断路器是放在filter中的
+            - name: Hystrix
+              args:
+                name: myfallbackcmd
+                # 断路转发的uri
+                fallbackUri: forward:/user/fallback
+
+
+
 ## Eureka 注册 client配置
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
