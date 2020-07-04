@@ -5,6 +5,11 @@ server:
 spring:
   application:
     name: net-gateway
+  # 这里用做限流算法使用
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
 
   cloud:
     gateway:
@@ -20,6 +25,8 @@ spring:
           id: BIZ-USER-API-1
           # lb代表从注册中心获取服务
           uri: lb://BIZ-USER-API
+          # 策略有很多种
+          # 参考：https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.1.RELEASE/reference/html/#gateway-request-predicates-factories
           predicates:
             # 转发该路径
             # 等于访问http://BIZ-USER-API/user/**
@@ -31,6 +38,17 @@ spring:
           filters:
             # 表示在转发时去掉userapi
             - StripPrefix=1
+            -
+            # 限流过滤器
+            - name: RequestRateLimiter
+                args:
+                  # 限流解析器bean名称，使用SpEl表达式从Spring容器中获取bean对象，实现了KeyResolver接口，实现resolve方法
+                  key-resolver: '#{@hostAddrKeyResolver}'
+                  # 令牌桶美妙填充速率
+                  redis-rate-limiter.replenishRate: 10
+                  # 令牌桶容量
+                  redis-rate-limiter.burstCapacity: 100
+
         ## 第二个路由配置
         -
           id: BIZ-USER-API-2

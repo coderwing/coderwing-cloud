@@ -27,6 +27,12 @@
             </exclusions>
         </dependency>
 
+        <!--    实现限流需引入 redis-reactive    -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+        </dependency>
+
         <!--  Eureka Client  -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
